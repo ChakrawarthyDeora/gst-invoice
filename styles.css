@@ -1,3 +1,10 @@
+@media print{
+  .headline{
+    display: none;
+  }
+}
+
+
 input{
 width: 240px;
 }
