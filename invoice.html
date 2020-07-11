@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+  <script>
+
+    document.addEventListener('DOMContentLoaded', function(){
+      document.querySelector('.receipt-content').style.display = "none";
+
+    var a = ['','one ','two ','three ','four ', 'five ','six ','seven ','eight ','nine ','ten ','eleven ','twelve ','thirteen ','fourteen ','fifteen ','sixteen ','seventeen ','eighteen ','nineteen '];
+    var b = ['', '', 'twenty','thirty','forty','fifty', 'sixty','seventy','eighty','ninety'];
+
+    function inWords (num) {
+        if ((num = num.toString()).length > 9) return 'overflow';
+        n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
+        if (!n) return; var str = '';
+        str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'crore ' : '';
+        str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'lakh ' : '';
+        str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'thousand ' : '';
+        str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'hundred ' : '';
+        str += (n[5] != 0) ? ((str != '') ? 'and ' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + ' rupees only ' : '';
+        return str;
+    }
+
+
+      document.querySelector('button').onclick = function(){
+        var today = new Date();
+        var date = today.getDate()+'-'+today.getMonth()+'-'+today.getFullYear();
+        pname = document.querySelector('#pname').value;
+        address = document.querySelector('#address').value;
+        gstno = document.querySelector('#gstno').value;
+        description = document.querySelector('#desc').value;
+        netweight = document.querySelector('#wt').value;
+        rate = document.querySelector('#rate').value;
+        partyno = document.querySelector('#partyno').value;
+        invoice = document.querySelector('#invoice_no').value;
+
+
+        yourname = document.querySelector('#your_name').value;
+        youraddress = document.querySelector('#your_address').value;
+        yourphone = document.querySelector('#your_phone').value;
+        yourgst = document.querySelector('#your_gst').value;
+        document.querySelector('form').style.display = "none";
+        amount = (netweight * rate);
+        cgst = (amount * 0.03/2);
+        sgst = (amount * 0.03/2);
+        igst = (amount * 0.03);
+        subtotal = amount;
+        totalgst = (amount * 0.03);
+        sub_grandtotal = amount + totalgst;
+        grandtotal = Math.round(sub_grandtotal);
+        roundoff = grandtotal - sub_grandtotal;
+        amount_in_words = inWords(grandtotal);
+        document.querySelector('.receipt-content').style.display = "block";
+        document.querySelector('#description').innerHTML = description;
+        document.querySelector('#netwt').innerHTML = netweight;
+        document.querySelector('#rate_d').innerHTML = rate;
+        document.querySelector('#amount').innerHTML = amount.toFixed(2);
+        document.querySelector('#subtotal').innerHTML = subtotal.toFixed(2);
+          document.querySelector('#roundoff').innerHTML = roundoff.toFixed(2);
+        if(document.getElementById('gst_type').value == "gst_cgst"){
+          document.querySelector('#cgst').innerHTML = cgst.toFixed(2);
+          document.querySelector('#sgst').innerHTML = sgst.toFixed(2);
+          document.querySelector('#igst').innerHTML = `--`;
+        }else{
+            document.querySelector('#igst').innerHTML = igst.toFixed(2);
+            document.querySelector('#cgst').innerHTML = `--`;
+            document.querySelector('#sgst').innerHTML = `--`;
+        }
+
+
+        document.querySelector('#grandtotal').innerHTML =`Rs `+ grandtotal;
+        document.querySelector('#display_address').innerHTML = address;
+        document.querySelector('#display_pname').innerHTML = pname;
+        document.querySelector('#display_date').innerHTML = date;
+        document.querySelector('#totalgst').innerHTML = totalgst.toFixed(2);
+        document.querySelector('#display_gst').innerHTML = gstno;
+        document.querySelector('#words').innerHTML = amount_in_words;
+
+        document.querySelector('#display_invoice').innerHTML = invoice;
+        document.querySelector('#display_yourname').innerHTML = yourname;
+        document.querySelector('#display_youraddress').innerHTML = youraddress;
+        document.querySelector('#display_yourno').innerHTML = yourphone;
+        document.querySelector('#display_yourgst').innerHTML = yourgst;
+        document.querySelector('#display_partyno').innerHTML = partyno;
+
+
+
+
+      }
+    });
+
+    </script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <meta charset="utf-8">
+
+    <meta charset="utf-8">
+    <title>GST Invoice </title>
+  </head>
+  <body>
+    <h1 class="headline">GST Invoice</h1>
+    <div class="container">
+    <form>
+      <h1>Your Details</h1>
+      <label for="">Company name: </label>
+      <input id="your_name" type="text" name="" value=""><br><br>
+      <label for="">Address: </label>
+      <input id="your_address" type="text" name="" value=""><br><br>
+      <label for="">Phone No: </label>
+      <input id="your_phone" type="text" name="" value=""><br><br>
+      <label for=""> Your GSTNo: </label>
+      <input id="your_gst" type="text" name="" value=""><br><br>
+
+      <h1>Party Details</h1>
+      <label for="invoice_no">Invoice No: </label>
+      <input id="invoice_no" type="text" name="" value=""><br><br>
+      <label for="pname">Party Name: </label>
+      <input id="pname" type="text" name="" value=""><br><br>
+      <label for="Address">Address: </label>
+      <input id="address" type="text" name="" value=""><br><br>
+      <label for="">Phone No:</label>
+      <input id="partyno" type="text" name="" value=""><br><br>
+      <label for="GST">GSTNo: </label>
+      <input id="gstno" type="text" name="" value=""><br><br>
+      <label for="particulars">Description: </label>
+      <input id="desc" type="text" name="" value=""><br><br>
+      <label for="netwt">Net Weight: </label>
+      <input id="wt" type="number" name="" value=""><br><br>
+      <label for="rate">Rate: </label>
+      <input id="rate" type="number" name="" value=""><br><br>
+      <label for="gst_type">Select the gst type: </label>
+      <select id="gst_type" class="" name="gst_type">
+        <option value="gst_cgst">CGST/SGST </option>
+        <option value="gst_igst"> IGST </option>
+      </select><br>
+      <button type="button" name="button">Submit</button><br><br><br>
+</div>
+
+
+
+<div class="receipt-content">
+    <div class="container bootstrap snippet">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="invoice-wrapper">
+          <div class="payment-info">
+            <h3 style="text-align:center;">Tax Invoice</h3>
+            <div class="row">
+              <div class="col-sm-6">
+                <span>Invoice No</span>
+                <strong  id="display_invoice">434334343</strong>
+              </div>
+              <div class="col-sm-6 text-right">
+                <span> Date</span>
+                <strong id="display_date"></strong>
+              </div>
+            </div>
+          </div><br>
+					<div class="intro">
+            <div class="row">
+            <div class="col-sm-6">
+              <strong id="display_yourname">Shri Ashapura Jewellers</strong> <br>
+              <span id="display_youraddress">Shastri Nagar, Belgaum,</span><br>
+              <span id="display_yourgst"></span><br>
+              <span id="display_yourno">  M.no: 9448110815</span>
+
+            </div>
+
+            <div class="col-sm-6 text-right">
+              <strong></strong><br>
+
+            </div>
+					</div>
+
+
+
+					<div class="payment-details">
+						<div class="row">
+							<div class="col-sm-6">
+								<span>Party Details</span>
+								<strong id="display_pname">
+									Andres felipe posada
+								</strong>
+							<span style="color:black;" id="display_address"></span>
+              <span style="color:black;" id="display_partyno"></span>
+
+                <p id="display_gst"></p>
+							</div>
+							<div class="col-sm-6 text-right">
+								<span></span>
+							</div>
+						</div>
+					</div>
+
+					<div class="line-items">
+						<div class="headers clearfix">
+							<div class="row">
+								<div class="col-3">Description</div>
+								<div class="col-3">Net Weight</div>
+                <div class="col-3">Rate</div>
+								<div class="col-3 text-right">Amount</div>
+
+							</div>
+						</div>
+						<div class="items">
+							<div class="row item">
+								<div id="description" class="col-3 desc">
+
+								</div>
+								<div id="netwt" class="col-3 qty">
+
+								</div>
+                <div id="rate_d" class="col-3 rate">
+
+                  </div>
+								<div id="amount" class="col-3 amount text-right">
+
+								</div>
+							</div>
+
+						</div>
+						<div class="total text-right">
+							<p class="extra-notes">
+								<strong  id="words">In Words</strong>
+								This is a computer generated invoice
+							</p>
+							<div class="field">
+								Subtotal <span id="subtotal"></span>
+							</div>
+							<div class="field">
+								CGST 1.5%<span  id="cgst"></span>
+							</div>
+							<div class="field">
+								SGST 1.5% <span  id="sgst"></span>
+							</div>
+              <div class="field">
+                IGST 3.0% <span  id="igst"></span>
+              </div>
+              <div class="field">
+                Total GST 3.0% <span  id="totalgst"></span>
+
+              </div>
+              <div class="field roundoff">
+                Roundoff <span id="roundoff"></span>
+              </div>
+							<div class="field grand-total">
+								Grand Total <span  id="grandtotal"></span>
+							</div>
+						</div>
+
+						<div class="print"  onclick="window.print(); return false;"">
+							<a href="#" id="print-button">
+								<i class="fa fa-print"></i>
+								Print this receipt
+							</a>
+						</div>
+					</div>
+				</div>
+
+				<div class="footer">
+					Copyright © 2020. Chakrawarthysingh Devada
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+  </body>
+</html>
