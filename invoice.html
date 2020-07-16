@@ -111,39 +111,127 @@
     <h1 class="headline">GST Invoice</h1>
     <div class="container">
     <form>
-      <h1>Your Details</h1>
-      <label for="">Company name: </label>
-      <input id="your_name" type="text" name="" value=""><br><br>
-      <label for="">Address: </label>
-      <input id="your_address" type="text" name="" value=""><br><br>
-      <label for="">Phone No: </label>
-      <input id="your_phone" type="text" name="" value=""><br><br>
-      <label for=""> Your GSTNo: </label>
-      <input id="your_gst" type="text" name="" value=""><br><br>
+      <h1>Your Details</h1><br>
+      <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="">Company name: </label>
+      <div class="col-sm-6">
+        <input class="form-control" id="your_name" type="text" name="" value="">
+      </div>
+    </div>
 
-      <h1>Party Details</h1>
-      <label for="invoice_no">Invoice No: </label>
-      <input id="invoice_no" type="text" name="" value=""><br><br>
-      <label for="pname">Party Name: </label>
-      <input id="pname" type="text" name="" value=""><br><br>
-      <label for="Address">Address: </label>
-      <input id="address" type="text" name="" value=""><br><br>
-      <label for="">Phone No:</label>
-      <input id="partyno" type="text" name="" value=""><br><br>
-      <label for="GST">GSTNo: </label>
-      <input id="gstno" type="text" name="" value=""><br><br>
-      <label for="particulars">Description: </label>
-      <input id="desc" type="text" name="" value=""><br><br>
-      <label for="netwt">Net Weight: </label>
-      <input id="wt" type="number" name="" value=""><br><br>
-      <label for="rate">Rate: </label>
-      <input id="rate" type="number" name="" value=""><br><br>
-      <label for="gst_type">Select the gst type: </label>
-      <select id="gst_type" class="" name="gst_type">
-        <option value="gst_cgst">CGST/SGST </option>
-        <option value="gst_igst"> IGST </option>
-      </select><br>
-      <button type="button" name="button">Submit</button><br><br><br>
+    <div class="form-group row">
+      <label class="col-sm-2 col-form-label" for="">Address: </label>
+      <div class="col-sm-6">
+          <input class="form-control" id="your_address" type="text" name="" value="">
+      </div>
+    </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="">Phone No: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="your_phone" type="text" name="" value="">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for=""> Your GSTNo: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="your_gst" type="text" name="" value="">
+        </div>
+      </div>
+
+      <div class="">
+          <h1>Party Details</h1>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="invoice_no">Invoice No: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="invoice_no" type="text" name="" value="">
+        </div>
+      </div>
+
+
+
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="pname">Party Name: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="pname" type="text" name="" value="">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="Address">Address: </label>
+        <div class="col-sm-6">
+            <input class="form-control" id="address" type="text" name="" value="">
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="">Phone No:</label>
+        <div class="col-sm-6">
+          <input class="form-control" id="partyno" type="text" name="" value="">
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="GST">GSTNo: </label>
+        <div class="col-sm-6">
+          <input  class="form-control" id="gstno" type="text" name="" value="">
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="particulars">Description: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="desc" type="text" name="" value="">
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="netwt">Net Weight: </label>
+        <div class="col-sm-6">
+          <input class="form-control" id="wt" type="number" name="" value="">
+        </div>
+      </div>
+
+
+
+      <div class="form-group row">
+
+              <label class="col-sm-2 col-form-label" for="rate">Rate: </label>
+              <div class="col-sm-6">
+                <input class="form-control" id="rate" type="number" name="" value="">
+              </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label" for="gst_type">Select the gst type: </label>
+        <div class="col-sm-2">
+        <select id="gst_type" class="form-control" name="gst_type">
+          <option value="gst_cgst">CGST/SGST </option>
+          <option value="gst_igst"> IGST </option>
+        </select>
+      </div>
+      </div>
+
+
+
+      <button type="button" class="btn btn-primary" name="button">Submit</button><br><br><br>
+    </div>
+    </form>
 </div>
 
 
