@@ -197,6 +197,7 @@ text-align: center;
   display: block;
   margin-bottom: 5px;
   color: #454545;
+  font-size:14px;
 }
 
 .receipt-content .invoice-wrapper .line-items .total .field {
